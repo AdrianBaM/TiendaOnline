@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreClientePost;
 
 class ClienteController extends Controller
 {
@@ -14,7 +15,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes=Cliente::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Clientes.index', ['clientes' => $clientes]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        echo view ('dashboard.Clientes.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClientePost $request)
     {
-        //
+        Cliente::create($request->validated());
+        return redirect('clientes/create')->with('status', 'El cliente ha sido creado con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        echo view('dashboard.Clientes.show', ["cliente"=>$cliente]);
     }
 
     /**
@@ -57,7 +60,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        echo view ('dashboard.Clientes.edit',['cliente'=>$cliente]);
     }
 
     /**
@@ -67,9 +70,10 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(StoreClientePost $request, Cliente $cliente)
     {
-        //
+        $cliente->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +84,7 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

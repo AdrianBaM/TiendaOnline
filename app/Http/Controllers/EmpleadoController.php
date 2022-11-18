@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEmpleadoPost;
 
 class EmpleadoController extends Controller
 {
@@ -14,7 +15,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        $empleados=Empleado::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Empleados.index', ['empleados' => $empleados]);
     }
 
     /**
@@ -24,7 +26,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        echo view ('dashboard.Empleados.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmpleadoPost $request)
     {
-        //
+        Empleado::create($request->validated());
+        return redirect('empleados/create')->with('status', 'El empleado ha sido creado con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        //
+        echo view('dashboard.Empleados.show', ["empleado"=>$empleado]);
     }
 
     /**
@@ -57,7 +60,7 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        //
+        echo view ('dashboard.Empleados.edit',['cliente'=>$empleado]);
     }
 
     /**
@@ -67,9 +70,10 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleado $empleado)
+    public function update(StoreEmpleadoPost $request, Empleado $empleado)
     {
-        //
+        $empleado->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +84,7 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        $empleado->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

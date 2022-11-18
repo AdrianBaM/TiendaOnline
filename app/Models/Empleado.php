@@ -9,7 +9,7 @@ class Empleado extends Model
 {
     use HasFactory;
     protected $fillable = ['Nombre', 'Telefono', 'Dpi', 'Direccion', 'Usuario', 'Pass'];
-    protected $table = 'Empleado';
+    protected $table = 'empleados';
 
     public function Tipo()
     {

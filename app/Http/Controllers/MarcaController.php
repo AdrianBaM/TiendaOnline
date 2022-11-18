@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreMarcaPost;
 
 class MarcaController extends Controller
 {
@@ -14,7 +15,8 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        //
+        $marcas=Marca::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Marcas.index', ['marcas' => $marcas]);
     }
 
     /**
@@ -24,7 +26,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        echo view ('dashboard.Marcas.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMarcaPost $request)
     {
-        //
+        Marca::create($request->validated());
+        return redirect('marcas/create')->with('status', 'La marca ha sido creada con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class MarcaController extends Controller
      */
     public function show(Marca $marca)
     {
-        //
+        echo view('dashboard.Marcas.show', ["marca"=>$marca]);
     }
 
     /**
@@ -57,7 +60,7 @@ class MarcaController extends Controller
      */
     public function edit(Marca $marca)
     {
-        //
+        echo view ('dashboard.Marcas.edit',['marca'=>$marca]);
     }
 
     /**
@@ -67,9 +70,10 @@ class MarcaController extends Controller
      * @param  \App\Models\Marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marca $marca)
+    public function update(StoreMarcaPost $request, Marca $marca)
     {
-        //
+        $marca->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +84,7 @@ class MarcaController extends Controller
      */
     public function destroy(Marca $marca)
     {
-        //
+        $marca->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

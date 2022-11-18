@@ -9,7 +9,7 @@ class Detalle extends Model
 {
     use HasFactory;
     protected $fillable = ['Subtotal', 'Cantidad'];
-    protected $table = 'Detalle';
+    protected $table = 'detalles';
 
     public function Producto()
     {

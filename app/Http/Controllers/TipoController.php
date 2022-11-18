@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTipoPost;
 
 class TipoController extends Controller
 {
@@ -14,7 +15,8 @@ class TipoController extends Controller
      */
     public function index()
     {
-        //
+        $tipos=Tipo::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Tipos.index', ['tipos' => $tipos]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TipoController extends Controller
      */
     public function create()
     {
-        //
+        echo view ('dashboard.Tipos.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class TipoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTipoPost $request)
     {
-        //
+        Tipo::create($request->validated());
+        return redirect('tipos/create')->with('status', 'El tipo ha sido creado con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class TipoController extends Controller
      */
     public function show(Tipo $tipo)
     {
-        //
+        echo view('dashboard.Tipos.show', ["tipo"=>$tipo]);
     }
 
     /**
@@ -57,7 +60,7 @@ class TipoController extends Controller
      */
     public function edit(Tipo $tipo)
     {
-        //
+        echo view ('dashboard.Tipos.edit',['tipo'=>$tipo]);
     }
 
     /**
@@ -67,9 +70,10 @@ class TipoController extends Controller
      * @param  \App\Models\Tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipo $tipo)
+    public function update(StoreTipoPost $request, Tipo $tipo)
     {
-        //
+        $tipo->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +84,7 @@ class TipoController extends Controller
      */
     public function destroy(Tipo $tipo)
     {
-        //
+        $tipo->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\TipoController;
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\SucursalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +23,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('categorias', CategoriaController::class);
+Route::resource('tipos', TipoController::class);
+Route::resource('departamentos', DepartamentoController::class);
+Route::resource('clientes', ClienteController::class);
+Route::resource('marcas', MarcaController::class);
+Route::resource('empleados', EmpleadoController::class);
+Route::resource('sucursals', SucursalController::class);

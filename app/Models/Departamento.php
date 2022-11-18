@@ -9,7 +9,7 @@ class Departamento extends Model
 {
     use HasFactory;
     protected $fillable = ['Depto'];
-    protected $table = 'Departamento';
+    protected $table = 'departamentos';
 
     public function Sucursales()
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Departamento;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDepartamentoPost;
 
 class DepartamentoController extends Controller
 {
@@ -14,7 +15,8 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        //
+        $departamentos=Departamento::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Departamentos.index', ['departamentos' => $departamentos]);
     }
 
     /**
@@ -24,7 +26,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        //
+        echo view ('dashboard.Departamentos.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class DepartamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDepartamentoPost $request)
     {
-        //
+        Departamento::create($request->validated());
+        return redirect('departamentos/create')->with('status', 'El departamento ha sido creado con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class DepartamentoController extends Controller
      */
     public function show(Departamento $departamento)
     {
-        //
+        echo view('dashboard.Departamentos.show', ["departamento"=>$departamento]);
     }
 
     /**
@@ -57,7 +60,7 @@ class DepartamentoController extends Controller
      */
     public function edit(Departamento $departamento)
     {
-        //
+        echo view ('dashboard.Departamentos.edit',['departamento'=>$departamento]);
     }
 
     /**
@@ -67,9 +70,10 @@ class DepartamentoController extends Controller
      * @param  \App\Models\Departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Departamento $departamento)
+    public function update(StoreDepartamentoPost $request, Departamento $departamento)
     {
-        //
+        $departamento->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +84,7 @@ class DepartamentoController extends Controller
      */
     public function destroy(Departamento $departamento)
     {
-        //
+        $departamento->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

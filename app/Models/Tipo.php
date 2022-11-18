@@ -9,7 +9,7 @@ class Tipo extends Model
 {
     use HasFactory;
     protected $fillable = ['TipoU'];
-    protected $table = 'Tipo';
+    protected $table = 'tipos';
 
     public function Empleados()
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoriaPost;
 
 class CategoriaController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias=Categoria::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Categorias.index', ['categorias' => $categorias]);
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        echo view ('dashboard.Categorias.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoriaPost $request)
     {
-        //
+        Categoria::create($request->validated());
+        return redirect('categorias/create')->with('status', 'La categoria ha sido creada con exito');
     }
 
     /**
@@ -46,7 +49,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        echo view('dashboard.Categorias.show', ["categoria"=>$categoria]);
     }
 
     /**
@@ -57,7 +60,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
+        echo view ('dashboard.Categorias.edit',['categoria'=>$categoria]);
     }
 
     /**
@@ -67,9 +70,10 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(StoreCategoriaPost $request, Categoria $categoria)
     {
-        //
+        $categoria->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +84,7 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

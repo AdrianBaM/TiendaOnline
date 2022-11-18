@@ -12,7 +12,7 @@ class Venta extends Model
     const ENTREGADO=2;
     const CANCELADO=3;
     protected $fillable = ['Fecha', 'Total', 'Envio', 'Estado', 'Direccion'];
-    protected $table = 'Venta';
+    protected $table = 'ventas';
 
     public function Detalles()
     {

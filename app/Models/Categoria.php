@@ -9,7 +9,7 @@ class Categoria extends Model
 {
     use HasFactory;
     protected $fillable = ['NCategoria'];
-    protected $table = 'Categoria';
+    protected $table = 'categorias';
 
     public function Marca()
     {
