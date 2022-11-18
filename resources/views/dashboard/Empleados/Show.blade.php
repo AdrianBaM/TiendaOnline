@@ -51,8 +51,8 @@
                             <br>
 
                             <label for=""class="form-label">Direccion</label>
-                            <input type="text" name="Direccion1" class="form-control" disabled value="{{$empleado->Direccion1}}">
-                            @error('Direccion1')
+                            <input type="text" name="Direccion" class="form-control" disabled value="{{$empleado->Direccion}}">
+                            @error('Direccion')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
@@ -67,6 +67,20 @@
                             <label for=""class="form-label">Pass</label>
                             <input type="text" name="Pass" class="form-control" disabled value="{{$empleado->Pass}}">
                             @error('Pass')
+                                <small class="text-light">{{ $message }}</small>
+                            @enderror
+                            <br>
+
+                            <label for=""class="form-label">Tipo Usuario</label>
+                            <input type="text" name="IDTipo" class="form-control" disabled value="{{$empleado->Tipo->TipoU}}">
+                            @error('IDTipo')
+                                <small class="text-light">{{ $message }}</small>
+                            @enderror
+                            <br>
+
+                            <label for=""class="form-label">Sucursal</label>
+                            <input type="text" name="IDSucursal" class="form-control" disabled value="{{$empleado->Sucursal->Direccion}}">
+                            @error('IDSucursal')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>

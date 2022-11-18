@@ -39,8 +39,12 @@ class SucursalController extends Controller
      */
     public function store(StoreSucursalPost $request)
     {
-        Sucursal::create($request->validated());
-        return redirect('sucursals/create')->with('status', 'La Sucursal ha sido creada con exito');
+        Sucursal::create([
+            'Direccion' => $request->Direccion,
+            'IDDepartamento' => $request->IDDepartamento,
+        ]); 
+
+        return redirect('sucursals/create')->with('status', 'La marca ha sido creada con exito');
     }
 
     /**
@@ -62,7 +66,8 @@ class SucursalController extends Controller
      */
     public function edit(Sucursal $sucursal)
     {
-        echo view ('dashboard.Sucursals.edit',['sucursal'=>$sucursal]);
+        $departamentos=Departamento::all();
+        echo view ('dashboard.Sucursals.edit',['sucursal'=>$sucursal],['departamentos'=>$departamentos]); 
     }
 
     /**
@@ -72,7 +77,7 @@ class SucursalController extends Controller
      * @param  \App\Models\Sucursal  $sucursal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sucursal $sucursal)
+    public function update(StoreSucursalPost $request, Sucursal $sucursal)
     {
         $sucursal->update($request->validated());
         return back()->with('status', 'Fue editado correctamente');

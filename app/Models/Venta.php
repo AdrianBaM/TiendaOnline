@@ -11,7 +11,7 @@ class Venta extends Model
     const ENCAMINO=1;
     const ENTREGADO=2;
     const CANCELADO=3;
-    protected $fillable = ['Fecha', 'Total', 'Envio', 'Estado', 'Direccion'];
+    protected $fillable = ['Fecha', 'Total', 'Envio', 'Estado', 'Direccion', 'IDCliente', 'IDSucursal', 'IDDepartamento'];
     protected $table = 'ventas';
 
     public function Detalles()

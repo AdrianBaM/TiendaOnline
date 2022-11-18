@@ -24,7 +24,7 @@ class StoreSucursalPost extends FormRequest
     public function rules()
     {
         return [
-            'Direccion' => 'required|min:10',
+            'Direccion' => 'required',
             'IDDepartamento' => 'required',
         ];
     }

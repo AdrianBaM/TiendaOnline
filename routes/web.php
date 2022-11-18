@@ -8,6 +8,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\SucursalController;
+use App\Http\Controllers\VentaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,5 @@ Route::resource('tipos', TipoController::class);
 Route::resource('departamentos', DepartamentoController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('marcas', MarcaController::class);
-Route::resource('empleados', EmpleadoController::class);
 Route::resource('sucursals', SucursalController::class);
+Route::resource('empleados', EmpleadoController::class);

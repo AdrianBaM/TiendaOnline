@@ -37,10 +37,10 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <select value="" id="" class="form-control form-floating mb-3" placeholder="Depto">
+                            <select name="IDDepartamento" id="IDDepartamento" class="form-control form-floating mb-3" placeholder="Depto">
                                 <option selected disabled>Departamento</option>
                                 @foreach ($departamentos as $departamento)
-                                    <option value="{{$departamento->Id}}">{{$departamento->Depto}}</option>
+                                    <option id="{{$departamento->id}}" value="{{$departamento->id}}">{{$departamento->Depto}}</option>
                                 @endforeach
                             </select>
                             @error('IDDepartamento')

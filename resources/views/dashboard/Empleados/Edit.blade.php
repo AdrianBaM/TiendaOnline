@@ -17,7 +17,7 @@
         <center><h1 class="mb-5">Actualizar Empleado</h1></center>
     </header>
     
-    <form action="{{route('empleado.update',$empleado->id)}}" method="post"> 
+    <form action="{{route('empleados.update',$empleado->id)}}" method="post"> 
         @method('PUT')
         @include('dashboard.partials.sesion-flash-status')
 
@@ -67,7 +67,34 @@
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
+                <div class="form-floating mb-3">
+                    <select name="IDTipo" id="IDTipo" class="form-control">
+                        <option value="" disabled>Tipo Usuario</option>
+                        @foreach ($tipos as $tipo)
+                            @if($empleado->IDTipo==$tipo->id)
+                                <option selected value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->TipoU}}</option>
+                            @else
+                                <option value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->TipoU}}</option>
+                            @endif
 
+                        @endforeach
+                    </select>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <select name="IDSucursal" id="IDSucursal" class="form-control">
+                        <option value="" disabled>Sucursal</option>
+                        @foreach ($sucursals as $sucursal)
+                            @if($empleado->IDSucursal==$sucursal->id)
+                                <option selected value="{{$sucursal->id}}" id="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
+                            @else
+                                <option value="{{$sucursal->id}}" id="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
+                            @endif
+
+                        @endforeach
+                    </select>
+                </div>
+                
                 
                 <center><button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
                     <a href="{{route('empleados.index')}}" class="btn btn-info mt-3">Regresar</a>

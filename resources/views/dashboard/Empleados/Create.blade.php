@@ -60,10 +60,32 @@
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="Pass" class="form-control form-floating mb-3" placeholder="Pass" >
+                    <input type="password" name="Pass" class="form-control form-floating mb-3" placeholder="Pass" >
                     <label for="text">Pass</label>
                     @error('Pass')
                     <small class="text-light">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-floating mb-3">
+                    <select name="IDTipo" id="IDTipo" class="form-control form-floating mb-3" placeholder="TipoU">
+                        <option selected disabled>Tipo Usuario</option>
+                        @foreach ($tipos as $tipo)
+                            <option id="{{$tipo->id}}" value="{{$tipo->id}}">{{$tipo->TipoU}}</option>
+                        @endforeach
+                    </select>
+                    @error('IDTipo')
+                    <small class="text-danger ">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-floating mb-3">
+                    <select name="IDSucursal" id="IDSucursal" class="form-control form-floating mb-3" placeholder="IDSucursal">
+                        <option selected disabled>Sucursal</option>
+                        @foreach ($sucursals as $sucursal)
+                            <option id="{{$sucursal->id}}" value="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
+                        @endforeach
+                    </select>
+                    @error('IDSucursal')
+                    <small class="text-danger ">{{ $message }}</small>
                     @enderror
                 </div>
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\Tipo;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEmpleadoPost;
 
@@ -26,7 +28,9 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        echo view ('dashboard.Empleados.create');
+        $tipos=Tipo::all();
+        $sucursals=Sucursal::all();
+        echo view ('dashboard.Empleados.create', ['tipos' => $tipos], ['sucursals' => $sucursals]);
     }
 
     /**
@@ -37,7 +41,16 @@ class EmpleadoController extends Controller
      */
     public function store(StoreEmpleadoPost $request)
     {
-        Empleado::create($request->validated());
+        Empleado::create([
+            'Nombre' => $request->Nombre,
+            'Telefono' => $request->Telefono,
+            'Dpi' => $request->Dpi,
+            'Direccion' => $request->Direccion,
+            'Usuario' => $request->Usuario,
+            'Pass' => $request->Pass,
+            'IDTipo' => $request->IDTipo,
+            'IDSucursal' => $request->IDSucursal,
+        ]); 
         return redirect('empleados/create')->with('status', 'El empleado ha sido creado con exito');
     }
 
@@ -60,7 +73,9 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        echo view ('dashboard.Empleados.edit',['cliente'=>$empleado]);
+        $sucursals=Sucursal::all();
+        $tipos=Tipo::all();
+        echo view ('dashboard.Empleados.edit', ['empleado'=>$empleado], ['tipos' => $tipos], ['sucursals' => $sucursals]);
     }
 
     /**

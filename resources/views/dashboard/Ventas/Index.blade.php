@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-    <title>Empleados</title>
+    <title>Ventas</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
             <div class="card">
                 
                 <div class="card-header">
-                    <a href="{{route('empleados.create')}}" class="btn btn-primary">Crear</a>
+                    <a href="{{route('sucursals.create')}}" class="btn btn-primary">Crear</a>
                     <table class="table table-striped">
                 <Thead>
                     <body>
@@ -33,25 +33,10 @@
                                 Id
                             </td>
                             <td>
-                                Nombre
-                            </td>
-                            <td>
-                                Telefono
-                            </td>
-                            <td>
-                                Dpi
-                            </td>
-                            <td>
                                 Direccion
                             </td>
                             <td>
-                                Usuario
-                            </td>
-                            <td>
-                                Tipo Usuario
-                            </td>
-                            <td>
-                                Sucursal
+                                Departamento
                             </td>
                             <td>
                                 Creado
@@ -66,45 +51,30 @@
                         
                     </body>
 
-                    @foreach ($empleados as $empleado)
+                    @foreach ($sucursals as $sucursal)
                         <tr>
                             <td>
-                                {{$empleado->id}}
+                                {{$sucursal->id}}
                             </td>
                             <td>
-                                {{$empleado->Nombre}}
+                                {{$sucursal->Direccion}}
                             </td>
                             <td>
-                                {{$empleado->Telefono}}
+                                {{$sucursal->Departamento->Depto}}
                             </td>
                             <td>
-                                {{$empleado->Dpi}}
-                            </td>
-                            <td>
-                                {{$empleado->Direccion}}
-                            </td>
-                            <td>
-                                {{$empleado->Usuario}}
-                            </td>
-                            <td>
-                                {{$empleado->Tipo->TipoU}}
-                            </td>
-                            <td>
-                                {{$empleado->Sucursal->Direccion}}
-                            </td>
-                            <td>
-                                {{$empleado->created_at->format('d-m-Y')}}
+                                {{$sucursal->created_at->format('d-m-Y')}}
                             </td>
                         
                             <td>
-                                {{$empleado->updated_at-> format('d-m-Y')}}
+                                {{$sucursal->updated_at-> format('d-m-Y')}}
                             </td>
 
                             <td>
-                                <a href="{{route('empleados.show', $empleado->id)}}" class="btn btn-outline-info">Ver</a>
-                                <a href="{{route('empleados.edit', $empleado->id)}}" class="btn btn-outline-info">Actualizar</a>
+                                <a href="{{route('sucursals.show', $sucursal->id)}}" class="btn btn-outline-info">Ver</a>
+                                <a href="{{route('sucursals.edit', $sucursal->id)}}" class="btn btn-outline-info">Actualizar</a>
                                                         
-                                <form method="POST" action="{{route('empleados.destroy', $empleado->id)}}">
+                                <form method="POST" action="{{route('sucursals.destroy', $sucursal->id)}}">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-outline-danger ms-5" type="submit">Borrar</button>
@@ -118,7 +88,7 @@
                 
             </table>
             <br>
-            {{$empleados->links()}}
+            {{$sucursals->links()}}
             <br>
         </div>
     </main>

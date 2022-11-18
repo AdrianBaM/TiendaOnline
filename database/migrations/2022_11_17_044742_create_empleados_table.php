@@ -21,9 +21,11 @@ return new class extends Migration
             $table->string('Direccion');
             $table->string('Usuario');
             $table->string('Pass');
-            $table->unsignedBigInteger('IDTipo');          
+            $table->unsignedBigInteger('IDTipo'); 
+            $table->unsignedBigInteger('IDSucursal');         
 
             $table->foreign('IDTipo')->references('id')->on('tipos')->onDelete('cascade');
+            $table->foreign('IDSucursal')->references('id')->on('sucursals')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -35,7 +35,15 @@
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
+
+                            <label for=""class="form-label">Departamento</label>
+                            <input type="text" name="IDDepartamento" class="form-control" disabled value="{{$sucursal->Departamento->Depto}}">
+                            @error('IDDepartamento')
+                                <small class="text-light">{{ $message }}</small>
+                            @enderror
+                            <br>
                         </section>
+
                     </form>
                   <a href="{{route('sucursals.index')}}" class="btn btn-info">Regresar</a>
                 </div>
