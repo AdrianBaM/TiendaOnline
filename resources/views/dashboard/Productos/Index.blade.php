@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-    <title>Ventas</title>
+    <title>Productos</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
             <div class="card">
                 
                 <div class="card-header">
-                    <a href="{{route('ventas.create')}}" class="btn btn-primary">Crear</a>
+                    <a href="{{route('productos.create')}}" class="btn btn-primary">Crear</a>
                     <table class="table table-striped">
                 <Thead>
                     <body>
@@ -33,28 +33,22 @@
                                 Id
                             </td>
                             <td>
-                                Fecha
+                                Nombre
                             </td>
                             <td>
-                                Total
+                                Descripcion
                             </td>
                             <td>
-                                Envio
+                                Precio
                             </td>
                             <td>
-                                Estado
+                                Codigo
                             </td>
                             <td>
-                                Direccion
+                                Imagen
                             </td>
                             <td>
-                                Cliente
-                            </td>
-                            <td>
-                                Sucursal
-                            </td>
-                            <td>
-                                Departamento
+                                Marca
                             </td>
                             <td>
                                 Creado
@@ -69,48 +63,42 @@
                         
                     </body>
 
-                    @foreach ($ventas as $venta)
+                    @foreach ($productos as $producto)
                         <tr>
                             <td>
-                                {{$venta->id}}
+                                {{$producto->id}}
                             </td>
                             <td>
-                                {{$venta->Fecha}}
+                                {{$producto->Nombre}}
                             </td>
                             <td>
-                                {{$venta->Total}}
+                                {{$producto->Descripcion}}
                             </td>
                             <td>
-                                {{$venta->Envio}}
+                                {{$producto->Precio}}
                             </td>
                             <td>
-                                {{$venta->Estado}}
+                                {{$producto->Cod}}
                             </td>
                             <td>
-                                {{$venta->Direccion}}
+                                <img src="{{asset($producto->Imagen)}}" width="50" height="50" class="img img-responsive">
                             </td>
                             <td>
-                                {{$venta->Cliente->Nombre}}
+                                {{$producto->Marca->NMarca}}
                             </td>
                             <td>
-                                {{$venta->Sucursal->Direccion}}
-                            </td>
-                            <td>
-                                {{$venta->Departamento->Depto}}
-                            </td>
-                            <td>
-                                {{$venta->created_at->format('d-m-Y')}}
+                                {{$producto->created_at->format('d-m-Y')}}
                             </td>
                         
                             <td>
-                                {{$venta->updated_at-> format('d-m-Y')}}
+                                {{$producto->updated_at-> format('d-m-Y')}}
                             </td>
 
                             <td>
-                                <a href="{{route('ventas.show', $venta->id)}}" class="btn btn-outline-info">Ver</a>
-                                <a href="{{route('ventas.edit', $venta->id)}}" class="btn btn-outline-info">Actualizar</a>
+                                <a href="{{route('productos.show', $producto->id)}}" class="btn btn-outline-info">Ver</a>
+                                <a href="{{route('productos.edit', $producto->id)}}" class="btn btn-outline-info">Actualizar</a>
                                                         
-                                <form method="POST" action="{{route('ventas.destroy', $venta->id)}}">
+                                <form method="POST" action="{{route('productos.destroy', $producto->id)}}">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-outline-danger ms-5" type="submit">Borrar</button>
@@ -124,7 +112,7 @@
                 
             </table>
             <br>
-            {{$ventas->links()}}
+            {{$productos->links()}}
             <br>
         </div>
     </main>

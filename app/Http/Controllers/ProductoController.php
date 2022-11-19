@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Marca;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductoPost;
 
 class ProductoController extends Controller
 {
@@ -14,7 +16,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos=Producto::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Productos.index', ['productos' => $productos]);
     }
 
     /**
@@ -24,7 +27,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $marcas=Marca::all();
+        echo view ('dashboard.Productos.create', compact('marcas'));
     }
 
     /**
@@ -35,7 +39,13 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData=$request->all();
+        $fileName=time().$request->file('Imagen')->getClientOriginalName();
+        $path=$request->file('Imagen')->storeAs('imagenes',$fileName,'public');
+        $requestData['Imagen']='/storage/'.$path;
+        Producto::create($requestData);
+
+        return redirect('productos/create')->with('status', 'El producto ha sido creado con exito');
     }
 
     /**
@@ -46,7 +56,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //
+        echo view('dashboard.Productos.show', ["producto"=>$producto]);
     }
 
     /**
@@ -57,7 +67,8 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        //
+        $marcas=Marca::all();
+        echo view ('dashboard.Productos.edit', compact('producto', 'marcas')); 
     }
 
     /**
@@ -67,9 +78,10 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(StoreProductoPost $request, Producto $producto)
     {
-        //
+        $producto->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +92,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

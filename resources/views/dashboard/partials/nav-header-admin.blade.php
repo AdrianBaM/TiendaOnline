@@ -31,6 +31,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/tipos">Tipos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/ventas">Ventas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

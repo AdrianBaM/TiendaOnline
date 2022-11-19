@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detalle;
+use App\Models\Venta;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDetallePost;
 
 class DetalleController extends Controller
 {
@@ -14,7 +16,8 @@ class DetalleController extends Controller
      */
     public function index()
     {
-        //
+        $detalles=Detalle::orderBy('created_at','asc')->cursorpaginate(5);
+        echo view ('dashboard.Detalles.index', ['detalles' => $detalles]);
     }
 
     /**
@@ -24,7 +27,8 @@ class DetalleController extends Controller
      */
     public function create()
     {
-        //
+        $ventas=Venta::all();
+        echo view ('dashboard.Detalles.create', compact('ventas'));
     }
 
     /**
@@ -33,9 +37,15 @@ class DetalleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDetallePost $request)
     {
-        //
+        Detalle::create([
+            'Subtotal' => $request->Subtotal,
+            'Cantidad' => $request->Cantidad,
+            'IDVenta' => $request->IDVenta,
+        ]); 
+
+        return redirect('detalles/create')->with('status', 'El detalle ha sido creado con exito');
     }
 
     /**
@@ -46,7 +56,7 @@ class DetalleController extends Controller
      */
     public function show(Detalle $detalle)
     {
-        //
+        echo view('dashboard.Detalles.show', ["detalle"=>$detalle]);
     }
 
     /**
@@ -57,7 +67,8 @@ class DetalleController extends Controller
      */
     public function edit(Detalle $detalle)
     {
-        //
+        $ventas=Venta::all();
+        echo view ('dashboard.Detalles.edit', compact('detalle', 'ventas')); 
     }
 
     /**
@@ -67,9 +78,10 @@ class DetalleController extends Controller
      * @param  \App\Models\Detalle  $detalle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Detalle $detalle)
+    public function update(StoreDetallePost $request, Detalle $detalle)
     {
-        //
+        $detalle->update($request->validated());
+        return back()->with('status', 'Fue editado correctamente');
     }
 
     /**
@@ -80,6 +92,7 @@ class DetalleController extends Controller
      */
     public function destroy(Detalle $detalle)
     {
-        //
+        $detalle->delete();
+        return back()->with('status','borrado exitosamente');
     }
 }

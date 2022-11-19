@@ -75,7 +75,7 @@ class EmpleadoController extends Controller
     {
         $sucursals=Sucursal::all();
         $tipos=Tipo::all();
-        echo view ('dashboard.Empleados.edit', ['empleado'=>$empleado], ['tipos' => $tipos], ['sucursals' => $sucursals]);
+        echo view ('dashboard.Empleados.edit', compact('empleado', 'sucursals', 'tipos'));
     }
 
     /**
