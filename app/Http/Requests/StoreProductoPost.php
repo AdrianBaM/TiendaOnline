@@ -28,7 +28,6 @@ class StoreProductoPost extends FormRequest
             'Descripcion' => 'required',
             'Precio' => 'required|numeric',
             'Cod' => 'required',
-            'Imagen' => 'required',
             'stock' => 'required',
             'IDMarca' => 'required',
         ];

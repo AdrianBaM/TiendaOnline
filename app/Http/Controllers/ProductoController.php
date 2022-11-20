@@ -83,19 +83,8 @@ class ProductoController extends Controller
      */
     public function update(StoreProductoPost $request, Producto $producto)
     {
-        if($request->file('Imagen'))
-        {
-            $requestData=$request->all();
-            $fileName=time().$request->file('Imagen')->getClientOriginalName();
-            $path=$request->file('Imagen')->storeAs('imagenes',$fileName,'public');
-            $requestData['Imagen']='/storage/'.$path;
-        }else
-        {
-            unset($requestData['Imagen']);
-        }
-        
 
-        $producto->update($requestData);
+        $producto->update($request->validated());
         return back()->with('status', 'Fue editado correctamente');
     }
 

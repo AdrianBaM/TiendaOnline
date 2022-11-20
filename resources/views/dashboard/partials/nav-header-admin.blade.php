@@ -37,9 +37,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/catma">Catma</a>
-                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
