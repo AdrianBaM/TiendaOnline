@@ -11,7 +11,8 @@ use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetalleController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\CatmaController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('login', 'login')->name('login')->middleware('guest');  
 Route::resource('categorias', CategoriaController::class);
 Route::resource('tipos', TipoController::class);
 Route::resource('departamentos', DepartamentoController::class);
@@ -38,4 +40,6 @@ Route::resource('empleados', EmpleadoController::class);
 Route::resource('ventas', VentaController::class);
 Route::resource('detalles', DetalleController::class);
 Route::resource('productos', ProductoController::class);
-Route::resource('catma', CatmaController::class);
+
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout']);
