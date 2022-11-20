@@ -8,16 +8,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     
-    <title>Empleados</title>
+    <title>Editar Usuario</title>
 </head>
 <body>
     <header>
-        @include('dashboard.partials.nav-header-admin')
+        @include('dashboard.partials.nav-header-manager')
         <br>
-        <center><h1 class="mb-5">Ingreso de Empleados</h1></center>
+        <center><h1 class="mb-5">Actualizar Usuario</h1></center>
     </header>
     
-    <form action="{{route('empleados.store')}}" method="post"> 
+    <form action="{{route('user.update',$usuario->id)}}" method="post"> 
+        @method('PUT')
         @include('dashboard.partials.sesion-flash-status')
 
         <section class="row 6">
@@ -25,49 +26,38 @@
             </article>
             <article class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> <!-- si -->
                 <div class="form-floating mb-3">
-                    <input type="text" name="Nombre" class="form-control form-floating mb-3" placeholder="Nombre" >
-                    <label for="text">Nombre</label>
-                    @error('Nombre')
-                    <small class="text-light">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="Telefono" class="form-control form-floating mb-3" placeholder="Telefono">
-                    <label for="text">Telefono</label>
-                    @error('Telefono')
-                    <small class="text-light">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="Dpi" class="form-control form-floating mb-3" placeholder="Dpi">
-                    <label for="text">Dpi</label>
-                    @error('Dpi')
-                    <small class="text-light">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="Direccion" class="form-control form-floating mb-3" placeholder="Direccion" >
-                    <label for="text">Direccion</label>
-                    @error('Direccion')
+                    <input type="text" name="Usuario" class="form-control form-floating mb-3" placeholder="Usuario" value="{{$usuario->Usuario}}">
+                    <label for="text">Usuario</label>
+                    @error('Usuario')
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="form-floating mb-3">
-                    <select name="IDSucursal" id="IDSucursal" class="form-control form-floating mb-3" placeholder="IDSucursal">
-                        <option selected disabled>Sucursal</option>
-                        @foreach ($sucursals as $sucursal)
-                            <option id="{{$sucursal->id}}" value="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
+                    <input type="password" name="Pass" class="form-control form-floating mb-3" placeholder="Pass" value="{{$usuario->Pass}}">
+                    <label for="text">Contraseña</label>
+                    @error('Pass')
+                    <small class="text-light">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select name="IDTipo" id="IDTipo" class="form-control">
+                        <option value="" disabled>Tipo de Usuario</option>
+                        @foreach ($tipos as $tipo)
+                            @if($usuario->IDTipo==$tipo->id)
+                                <option selected value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->TipoU}}</option>
+                            @else
+                                <option value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->TipoU}}</option>
+                            @endif
+
                         @endforeach
                     </select>
-                    @error('IDSucursal')
-                    <small class="text-danger ">{{ $message }}</small>
-                    @enderror
                 </div>
 
                 
                 <center><button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
-                    <a href="{{route('empleados.index')}}" class="btn btn-info mt-3">Regresar</a>
+                    <a href="{{route('user.index')}}" class="btn btn-info mt-3">Regresar</a>
 
                 </center>
 

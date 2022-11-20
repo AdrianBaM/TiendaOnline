@@ -57,27 +57,6 @@
                             @enderror
                             <br>
 
-                            <label for=""class="form-label">Usuario</label>
-                            <input type="text" name="Usuario" class="form-control" disabled value="{{$empleado->Usuario}}">
-                            @error('Usuario')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-
-                            <label for=""class="form-label">Pass</label>
-                            <input type="text" name="Pass" class="form-control" disabled value="{{$empleado->Pass}}">
-                            @error('Pass')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-
-                            <label for=""class="form-label">Tipo Usuario</label>
-                            <input type="text" name="IDTipo" class="form-control" disabled value="{{$empleado->Tipo->TipoU}}">
-                            @error('IDTipo')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-
                             <label for=""class="form-label">Sucursal</label>
                             <input type="text" name="IDSucursal" class="form-control" disabled value="{{$empleado->Sucursal->Direccion}}">
                             @error('IDSucursal')

@@ -11,7 +11,7 @@ use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetalleController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -29,17 +29,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('login', 'login')->name('login')->middleware('guest');  
-Route::resource('categorias', CategoriaController::class);
-Route::resource('tipos', TipoController::class);
-Route::resource('departamentos', DepartamentoController::class);
-Route::resource('clientes', ClienteController::class);
-Route::resource('marcas', MarcaController::class);
-Route::resource('sucursals', SucursalController::class);
-Route::resource('empleados', EmpleadoController::class);
-Route::resource('ventas', VentaController::class);
-Route::resource('detalles', DetalleController::class);
-Route::resource('productos', ProductoController::class);
 
-Route::post('login', [LoginController::class, 'login']);
-Route::post('logout', [LoginController::class, 'logout']);
+Route::view('login', 'login')->name('login')->middleware('guest');
+Route::resource('categorias', CategoriaController::class)->middleware('auth');
+Route::resource('tipos', TipoController::class)->middleware('auth');
+Route::resource('departamentos', DepartamentoController::class)->middleware('auth');
+Route::resource('clientes', ClienteController::class)->middleware('auth');
+Route::resource('marcas', MarcaController::class)->middleware('auth');
+Route::resource('sucursals', SucursalController::class)->middleware('auth');
+Route::resource('empleados', EmpleadoController::class)->middleware('auth');
+Route::resource('ventas', VentaController::class)->middleware('auth');
+Route::resource('detalles', DetalleController::class)->middleware('auth');
+Route::resource('productos', ProductoController::class)->middleware('auth');
+Route::resource('user', UserController::class)->middleware('auth');
+
+Route::post('login', [UserController::class, 'login']);
+Route::post('logout', [UserController::class, 'logout']);

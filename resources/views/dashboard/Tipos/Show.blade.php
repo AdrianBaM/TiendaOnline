@@ -9,7 +9,7 @@
     <title>Ver</title>
 </head>
 <body>
-    <header>@include('dashboard.partials.nav-header-admin')</header>
+    <header>@include('dashboard.partials.nav-header-manager')</header>
     <br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->

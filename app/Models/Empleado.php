@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre', 'Telefono', 'Dpi', 'Direccion', 'Usuario', 'Pass', 'IDTipo', 'IDSucursal'];
+    protected $fillable = ['Nombre', 'Telefono', 'Dpi', 'Direccion', 'IDSucursal'];
     protected $table = 'empleados';
 
-    public function Tipo()
+    /* public function Tipo()
     {
         return $this->belongsTo(Tipo::class, 'IDTipo');
-    }
+    } */
 
     public function Sucursal()
     {

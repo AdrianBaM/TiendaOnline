@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        @include('dashboard.partials.nav-header-admin')
+        @include('dashboard.partials.nav-header-manager')
         <br>
         <center><h1 class="mb-5">Actualizar Tipos</h1></center>
     </header>

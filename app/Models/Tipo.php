@@ -13,6 +13,6 @@ class Tipo extends Model
 
     public function Empleados()
     {
-        return $this->hasMany(Empleado::class, 'IDEmpleado');
+        return $this->hasMany(User::class, 'IDEmpleado');
     }
 }

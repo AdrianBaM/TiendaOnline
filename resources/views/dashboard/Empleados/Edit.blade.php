@@ -53,33 +53,6 @@
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="Usuario" class="form-control form-floating mb-3" placeholder="Usuario" value="{{$empleado->Usuario}}">
-                    <label for="text">Usuario</label>
-                    @error('Usuario')
-                    <small class="text-light">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="Pass" class="form-control form-floating mb-3" placeholder="Pass" value="{{$empleado->Pass}}">
-                    <label for="text">Pass</label>
-                    @error('Pass')
-                    <small class="text-light">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="form-floating mb-3">
-                    <select name="IDTipo" id="IDTipo" class="form-control">
-                        <option value="" disabled>Tipo Usuario</option>
-                        @foreach ($tipos as $tipo)
-                            @if($empleado->IDTipo==$tipo->id)
-                                <option selected value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->TipoU}}</option>
-                            @else
-                                <option value="{{$tipo->id}}" id="{{$tipo->id}}">{{$tipo->TipoU}}</option>
-                            @endif
-
-                        @endforeach
-                    </select>
-                </div>
                 
                 <div class="form-floating mb-3">
                     <select name="IDSucursal" id="IDSucursal" class="form-control">

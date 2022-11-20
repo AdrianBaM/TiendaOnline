@@ -45,12 +45,6 @@
                                 Direccion
                             </td>
                             <td>
-                                Usuario
-                            </td>
-                            <td>
-                                Tipo Usuario
-                            </td>
-                            <td>
                                 Sucursal
                             </td>
                             <td>
@@ -84,13 +78,7 @@
                                 {{$empleado->Direccion}}
                             </td>
                             <td>
-                                {{$empleado->Usuario}}
-                            </td>
-                            <td>
-                                {{$empleado->Tipo->TipoU}}
-                            </td>
-                            <td>
-                                {{$empleado->Sucursal->Direccion}}
+                                {{$empleado->IDSucursal}}
                             </td>
                             <td>
                                 {{$empleado->created_at->format('d-m-Y')}}

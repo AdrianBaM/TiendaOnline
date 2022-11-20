@@ -29,6 +29,9 @@
                     <a class="nav-link active" aria-current="page" href="/sucursals">Sucursales</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/tipos">Tipos</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/ventas">Ventas</a>
                 </li>
                 <li class="nav-item">
@@ -36,6 +39,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/user">Usuarios</a>
                 </li>
             </ul>
 
