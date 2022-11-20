@@ -9,7 +9,7 @@
     <title>Ver</title>
 </head>
 <body>
-    <header>@include('dashboard.partials.nav-header-admin')</header>
+    <header>@include('dashboard.partials.nav-header-manager')</header>
     <br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
@@ -20,24 +20,10 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                  <h2>Tipos</h2>
+                  <h2>Manager</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('tipos.store')}}" method="post">
-
-            
-                        @csrf
-            
-                        <section class="margen">
-                            <label for=""class="form-label" >Tipo de Usuario</label>
-                            <input type="text" name="TipoU" class="form-control" disabled value="{{$tipo->TipoU}}">
-                            @error('TipoU')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-                        </section>
-                    </form>
-                  <a href="{{route('tipos.index')}}" class="btn btn-info">Regresar</a>
+                    
                 </div>
             </div>
         </div>

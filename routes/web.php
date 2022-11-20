@@ -12,6 +12,8 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetalleController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -29,6 +31,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::view('login', 'login')->name('login')->middleware('guest');
 Route::resource('categorias', CategoriaController::class)->middleware('auth');
@@ -42,6 +45,9 @@ Route::resource('ventas', VentaController::class)->middleware('auth');
 Route::resource('detalles', DetalleController::class)->middleware('auth');
 Route::resource('productos', ProductoController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
+
+Route::resource('Admin', AdminController::class)->middleware('auth');
+Route::resource('Manager', ManagerController::class)->middleware('auth');
 
 Route::post('login', [UserController::class, 'login']);
 Route::post('logout', [UserController::class, 'logout']);

@@ -12,7 +12,7 @@
 <body>
 
     
-    <header>@include('dashboard.partials.nav-header-manager')</header>
+    <header>@include('dashboard.partials.nav-header-admin')</header>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
   

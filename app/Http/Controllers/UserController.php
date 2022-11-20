@@ -17,15 +17,13 @@ class UserController extends Controller
         if($user->Pass === md5($request->Pass))
         {
             Auth::login($user);
-            /* return redirect('post/create'); */
-
-            if($request->IDTipo === 1)
+            if($user->IDTipo === 1)
             {
                 return redirect('/productos');
             }
-            if($request->IDTipo === 2)
+            if($user->IDTipo === 2)
             {
-                return redirect('/marcas');
+                return redirect('/productos');
             }
             
         }

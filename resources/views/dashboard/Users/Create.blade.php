@@ -12,7 +12,7 @@
    
 
     <header>
-        @include('dashboard.partials.nav-header-manager')
+        @include('dashboard.partials.nav-header-admin')
         <br>
         <center><h1 class="mb-5">Ingreso de Usuarios</h1></center>
     </header>

@@ -12,12 +12,7 @@
 <body>
 
     
-    <header>@include('dashboard.partials.nav-header-manager')</header>
-
-    <!-- Si hay cualquier tipo de error se generara algo -->
-  
-    <!-- Siempre colocar el endif -->
-
+    <header>@include('dashboard.partials.nav-header-admin')</header>
     <main>
         <br><br>
         <div class="container">
