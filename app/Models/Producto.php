@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre', 'Descripcion', 'Precio', 'Cod', 'Imagen', 'IDMarca'];
+    protected $fillable = ['Nombre', 'Descripcion', 'Precio', 'Cod', 'Imagen', 'Stock', 'IDMarca', 'IDSucursal'];
     protected $table = 'productos';
 
 
-    public function Sucursales()
+    public function Sucursal()
     {
-        return $this->belongsToMany(Sucursal::class, 'IDSucursal')->withPivot('Existencias');
+        return $this->belongsTo(Sucursal::class, 'IDSucursal');
     }
 
     public function Marca()

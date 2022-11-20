@@ -23,7 +23,7 @@ class Sucursal extends Model
 
     public function Productos()
     {
-        return $this->belongsToMany(Producto::class, 'IDProducto');
+        return $this->hasMany(Producto::class, 'IDProducto');
     }
 
     public function Ventas()

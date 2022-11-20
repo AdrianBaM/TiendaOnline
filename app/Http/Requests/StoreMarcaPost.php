@@ -25,6 +25,7 @@ class StoreMarcaPost extends FormRequest
     {
         return [
             'NMarca' => 'required|min:1',
+            'IDCategoria' => 'required',
         ];
     }
 }

@@ -35,6 +35,18 @@
                             <small class="text-danger ">{{ $message }}</small>
                             @enderror
                         </div>
+
+                        <div class="form-floating mb-3">
+                            <select name="IDCategoria" id="IDCategoria" class="form-control form-floating mb-3" placeholder="IDCategoria">
+                                <option selected disabled>Categoria</option>
+                                @foreach ($categorias as $categoria)
+                                    <option id="{{$categoria->id}}" value="{{$categoria->id}}">{{$categoria->NCategoria}}</option>
+                                @endforeach
+                            </select>
+                            @error('IDCategoria')
+                            <small class="text-danger ">{{ $message }}</small>
+                            @enderror
+                        </div>
         
                         <center>
                             <button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>

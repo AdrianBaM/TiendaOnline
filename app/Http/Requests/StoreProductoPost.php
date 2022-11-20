@@ -29,6 +29,7 @@ class StoreProductoPost extends FormRequest
             'Precio' => 'required|numeric',
             'Cod' => 'required',
             'Imagen' => 'required',
+            'stock' => 'required',
             'IDMarca' => 'required',
         ];
     }

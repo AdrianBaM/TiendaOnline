@@ -36,6 +36,9 @@
                                 Marca
                             </td>
                             <td>
+                                Categoria
+                            </td>
+                            <td>
                                 Creado
                             </td>
                             <td>
@@ -55,6 +58,9 @@
                             </td>
                             <td>
                                 {{$marca->NMarca}}
+                            </td>
+                            <td>
+                                {{$marca->Categoria->NCategoria}}
                             </td>
                             <td>
                                 {{$marca->created_at->format('d-m-Y')}}

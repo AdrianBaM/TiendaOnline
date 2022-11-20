@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use App\Models\Marca;
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductoPost;
 
@@ -28,7 +29,8 @@ class ProductoController extends Controller
     public function create()
     {
         $marcas=Marca::all();
-        echo view ('dashboard.Productos.create', compact('marcas'));
+        $sucursals=Sucursal::all();
+        echo view ('dashboard.Productos.create', compact('marcas', 'sucursals'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductoPost $request)
     {
         $requestData=$request->all();
         $fileName=time().$request->file('Imagen')->getClientOriginalName();
@@ -68,7 +70,8 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         $marcas=Marca::all();
-        echo view ('dashboard.Productos.edit', compact('producto', 'marcas')); 
+        $sucursals=Sucursal::all();
+        echo view ('dashboard.Productos.edit', compact('producto', 'marcas', 'sucursals')); 
     }
 
     /**
@@ -80,7 +83,19 @@ class ProductoController extends Controller
      */
     public function update(StoreProductoPost $request, Producto $producto)
     {
-        $producto->update($request->validated());
+        if($request->file('Imagen'))
+        {
+            $requestData=$request->all();
+            $fileName=time().$request->file('Imagen')->getClientOriginalName();
+            $path=$request->file('Imagen')->storeAs('imagenes',$fileName,'public');
+            $requestData['Imagen']='/storage/'.$path;
+        }else
+        {
+            unset($requestData['Imagen']);
+        }
+        
+
+        $producto->update($requestData);
         return back()->with('status', 'Fue editado correctamente');
     }
 

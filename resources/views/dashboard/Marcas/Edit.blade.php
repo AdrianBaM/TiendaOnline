@@ -33,6 +33,20 @@
                     @enderror
                 </div>
 
+                <div class="form-floating mb-3">
+                    <select name="IDCategoria" id="IDCategoria" class="form-control">
+                        <option value="" disabled>Categoria</option>
+                        @foreach ($categorias as $categoria)
+                            @if($marca->IDCategoria==$categoria->id)
+                                <option selected value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->NCategoria}}</option>
+                            @else
+                                <option value="{{$categoria->id}}" id="{{$categoria->id}}">{{$categoria->NCategoria}}</option>
+                            @endif
+
+                        @endforeach
+                    </select>
+                </div>
+
                 
                 <center><button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
                     <a href="{{route('marcas.index')}}" class="btn btn-info mt-3">Regresar</a>

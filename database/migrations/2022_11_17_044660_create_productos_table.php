@@ -20,9 +20,12 @@ return new class extends Migration
             $table->float('Precio');
             $table->string('Cod');
             $table->string('Imagen');
+            $table->integer('stock');
             $table->unsignedBigInteger('IDMarca');          
+            $table->unsignedBigInteger('IDSucursal');          
 
             $table->foreign('IDMarca')->references('id')->on('marcas')->onDelete('cascade');
+            $table->foreign('IDSucursal')->references('id')->on('sucursals')->onDelete('cascade');
             $table->timestamps();
         });
     }

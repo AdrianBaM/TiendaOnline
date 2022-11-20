@@ -48,6 +48,9 @@
                                 Imagen
                             </td>
                             <td>
+                                Existencias
+                            </td>
+                            <td>
                                 Marca
                             </td>
                             <td>
@@ -81,7 +84,10 @@
                                 {{$producto->Cod}}
                             </td>
                             <td>
-                                <img src="{{asset($producto->Imagen)}}" width="50" height="50" class="img img-responsive">
+                                <img src="{{asset($producto->Imagen)}}" width="150" height="80" class="img img-responsive">
+                            </td>
+                            <td>
+                                {{$producto->stock}}
                             </td>
                             <td>
                                 {{$producto->Marca->NMarca}}

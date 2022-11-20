@@ -21,7 +21,7 @@
         <div class="container">
 
 
-            <form action="{{route('productos.store')}}" method="post"> 
+            <form action="{{route('productos.store')}}" method="post" enctype="multipart/form-data"> 
                 @include('dashboard.partials.sesion-flash-status')
         
                 <section class="row 6">
@@ -69,6 +69,14 @@
                         </div>
 
                         <div class="form-floating mb-3">
+                            <input type="number" name="Stock" class="form-control form-floating mb-3" placeholder="Stock" >
+                            <label for="text">Stock</label>
+                            @error('Stock')
+                            <small class="text-danger ">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="form-floating mb-3">
                             <select name="IDMarca" id="IDMarca" class="form-control form-floating mb-3" placeholder="Marca">
                                 <option selected disabled>Marca</option>
                                 @foreach ($marcas as $marca)
@@ -76,6 +84,18 @@
                                 @endforeach
                             </select>
                             @error('IDMarca')
+                            <small class="text-danger ">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select name="IDSucursal" id="IDSucursal" class="form-control form-floating mb-3" placeholder="IDSucursal">
+                                <option selected disabled>Sucursal</option>
+                                @foreach ($sucursals as $sucursal)
+                                    <option id="{{$sucursal->id}}" value="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
+                                @endforeach
+                            </select>
+                            @error('IDSucursal')
                             <small class="text-danger ">{{ $message }}</small>
                             @enderror
                         </div>

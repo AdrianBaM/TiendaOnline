@@ -57,8 +57,12 @@
                             <br>
 
                             <label for=""class="form-label">Imagen</label>
-                            <input type="text" name="Imagen" class="form-control" disabled value="{{$producto->Imagen}}">
-                            @error('Imagen')
+                            <img src="{{asset($producto->Imagen)}}" width="40%" height="25%" class="img img-responsive">
+                            <br>
+
+                            <label for=""class="form-label">Stock</label>
+                            <input type="number" name="stock" class="form-control" disabled value="{{$producto->stock}}">
+                            @error('stock')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
@@ -66,6 +70,13 @@
                             <label for=""class="form-label">Marca</label>
                             <input type="text" name="IDMarca" class="form-control" disabled value="{{$producto->Marca->NMarca}}">
                             @error('IDMarca')
+                                <small class="text-light">{{ $message }}</small>
+                            @enderror
+                            <br>
+
+                            <label for=""class="form-label">Marca</label>
+                            <input type="text" name="IDSucursal" class="form-control" disabled value="{{$producto->Sucursal->Direccion}}">
+                            @error('IDSucursal')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>

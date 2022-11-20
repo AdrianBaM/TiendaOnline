@@ -11,8 +11,8 @@ class Categoria extends Model
     protected $fillable = ['NCategoria'];
     protected $table = 'categorias';
 
-    public function Marca()
+    public function Marcas()
     {
-        return $this->belongsToMany(Marca::class, 'IDMarca');
+        return $this->hasMany(Marca::class, 'IDMarca');
     }
 }

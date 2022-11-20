@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marca;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMarcaPost;
 
@@ -26,7 +27,8 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        echo view ('dashboard.Marcas.create');
+        $categorias=Categoria::all();
+        echo view ('dashboard.Marcas.create', compact('categorias'));
     }
 
     /**
@@ -60,7 +62,8 @@ class MarcaController extends Controller
      */
     public function edit(Marca $marca)
     {
-        echo view ('dashboard.Marcas.edit',['marca'=>$marca]);
+        $categorias=Categoria::all();
+        echo view ('dashboard.Marcas.edit', compact('marca', 'categorias'));
     }
 
     /**

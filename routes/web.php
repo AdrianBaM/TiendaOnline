@@ -11,6 +11,7 @@ use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetalleController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CatmaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,4 @@ Route::resource('empleados', EmpleadoController::class);
 Route::resource('ventas', VentaController::class);
 Route::resource('detalles', DetalleController::class);
 Route::resource('productos', ProductoController::class);
+Route::resource('catma', CatmaController::class);

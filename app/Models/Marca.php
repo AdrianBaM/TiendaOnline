@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     use HasFactory;
-    protected $fillable = ['NMarca'];
+    protected $fillable = ['NMarca', 'IDCategoria'];
     protected $table = 'marcas';
 
     public function Productos()
@@ -18,6 +18,6 @@ class Marca extends Model
 
     public function Categoria()
     {
-        return $this->belongsToMany(Categoria::class, 'IDCategoria');
+        return $this->belongsTo(Categoria::class, 'IDCategoria');
     }
 }

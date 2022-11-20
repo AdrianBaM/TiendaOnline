@@ -7,9 +7,39 @@ use App\Models\Tipo;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreEmpleadoPost;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 
 class EmpleadoController extends Controller
 {
+
+    public function login(Request $request, Redirector $redirect)
+    {
+        $empleado = Empleado::where('IDTipo', $request->IDTipo)->first();
+        if($empleado->Pass === md5($request->Pass))
+        {
+            Auth::login($empleado);
+
+            if($request->IDTipo === 'Admin')
+            {
+                return redirect('far');
+            }
+            if($request->IDTipo === 'User'){
+                return redirect('/');
+            }
+            if($request->IDTipo === 'Admin'){
+                return redirect('post');
+            }
+            
+        }
+        return redirect('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
     /**
      * Display a listing of the resource.
      *
