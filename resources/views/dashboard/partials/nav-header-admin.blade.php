@@ -29,13 +29,13 @@
                     <a class="nav-link active" aria-current="page" href="/sucursals">Sucursales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/ventas">Ventas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/detalles">Detalle</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/shop">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/cart">Carrito</a>
                 </li>
             </ul>
 

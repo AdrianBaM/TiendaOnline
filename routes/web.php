@@ -53,7 +53,7 @@ Route::resource('Manager', ManagerController::class)->middleware('auth');
 Route::post('login', [UserController::class, 'login']);
 Route::post('logout', [UserController::class, 'logout']);
 
-Route::get('/', [CartController::class, 'shop'])->name('shop');
+Route::get('/shop', [CartController::class, 'shop'])->name('shop');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
 Route::post('/add', [CartController::class, 'add'])->name('cart.store');
 Route::post('/update', [CartController::class, 'update'])->name('cart.update');

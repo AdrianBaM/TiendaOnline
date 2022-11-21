@@ -66,6 +66,13 @@
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
+                <div class="my-2">
+                    <label >Imagen</label>
+                    <input class="form-control mb-3" name="image_path" id="image_path" type="file">
+                    @error('image_path')
+                    <small class="text-danger ">{{ $message }}</small>
+                    @enderror
+                </div>
                 <div class="form-floating mb-3">
                     <select name="brand_id" id="brand_id" class="form-control">
                         <option value="" selected disabled>Marca</option>
