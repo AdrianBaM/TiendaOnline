@@ -26,52 +26,57 @@
             </article>
             <article class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> <!-- si -->
                 <div class="form-floating mb-3">
-                    <input type="text" name="Nombre" class="form-control form-floating mb-3" placeholder="Nombre" value="{{$producto->Nombre}}">
+                    <input type="text" name="name" class="form-control form-floating mb-3" placeholder="name" value="{{$producto->name}}">
                     <label for="text">Nombre</label>
-                    @error('Nombre')
+                    @error('name')
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="Descripcion" class="form-control form-floating mb-3" placeholder="Descripcion" value="{{$producto->Descripcion}}">
-                    <label for="text">Descripcion</label>
-                    @error('Descripcion')
+                    <input type="text" name="slug" class="form-control form-floating mb-3" placeholder="slug" value="{{$producto->slug}}">
+                    <label for="text">Codigo</label>
+                    @error('slug')
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" step="0.25" name="Precio" class="form-control form-floating mb-3" placeholder="Precio" value="{{$producto->Precio}}">
+                    <input type="text" name="details" class="form-control form-floating mb-3" placeholder="details" value="{{$producto->details}}">
+                    <label for="text">Detalles</label>
+                    @error('details')
+                    <small class="text-light">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" step="0.25" name="price" class="form-control form-floating mb-3" placeholder="price" value="{{$producto->price}}">
                     <label for="text">Precio</label>
-                    @error('Precio')
+                    @error('price')
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="Cod" class="form-control form-floating mb-3" placeholder="Cod" value="{{$producto->Cod}}">
-                    <label for="text">Cod</label>
-                    @error('Cod')
+                    <input type="number" step="0.25" name="shipping_cost" class="form-control form-floating mb-3" placeholder="shipping_cost" value="{{$producto->shipping_cost}}">
+                    <label for="text">Envio</label>
+                    @error('shipping_cost')
+                    <small class="text-light">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="description" class="form-control form-floating mb-3" placeholder="description" value="{{$producto->description}}">
+                    <label for="text">Descripcion</label>
+                    @error('description')
                     <small class="text-light">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label>Imagen</label>
-                    <input class="form-control mb-3" id="Imagen"  name="Imagen" type="file" placeholder="image">
-                    <img src="{{asset($producto->Imagen)}}" width="300px">
+                    <input class="form-control mb-3" id="image_path"  name="image_path" type="file" placeholder="image_path">
+                    <img src="{{asset($producto->image_path)}}" width="300px">
                 </div>
-
                 <div class="form-floating mb-3">
-                    <input type="number" name="stock" class="form-control form-floating mb-3" placeholder="stock" value="{{$producto->stock}}">
-                    <label for="text">Existencias</label>
-                    @error('stock')
-                    <small class="text-light">{{ $message }}</small>
-                    @enderror
-                </div>
-                
-                <div class="form-floating mb-3">
-                    <select name="IDMarca" id="IDMarca" class="form-control">
+                    <select name="brand_id" id="brand_id" class="form-control">
                         <option value="" disabled>Marca</option>
                         @foreach ($marcas as $marca)
-                            @if($producto->IDMarca==$marca->id)
+                            @if($producto->brand_id==$marca->id)
                                 <option selected value="{{$marca->id}}" id="{{$marca->id}}">{{$marca->NMarca}}</option>
                             @else
                                 <option value="{{$marca->id}}" id="{{$marca->id}}">{{$marca->NMarca}}</option>
@@ -82,10 +87,10 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <select name="IDSucursal" id="IDSucursal" class="form-control">
+                    <select name="category_id" id="category_id" class="form-control">
                         <option value="" disabled>Marca</option>
                         @foreach ($sucursals as $sucursal)
-                            @if($producto->IDSucursal==$sucursal->id)
+                            @if($producto->category_id==$sucursal->id)
                                 <option selected value="{{$sucursal->id}}" id="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
                             @else
                                 <option value="{{$sucursal->id}}" id="{{$sucursal->id}}">{{$sucursal->Direccion}}</option>
@@ -96,7 +101,7 @@
                 </div>
                 
                 
-                <center><button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
+                <center><button type="submit" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
                     <a href="{{route('productos.index')}}" class="btn btn-info mt-3">Regresar</a>
 
                 </center>

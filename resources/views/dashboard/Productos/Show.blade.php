@@ -29,54 +29,61 @@
             
                         <section class="margen">
                             <label for=""class="form-label">Nombre</label>
-                            <input type="text" name="Nombre" class="form-control" disabled value="{{$producto->Nombre}}">
-                            @error('Nombre')
+                            <input type="text" name="name" class="form-control" disabled value="{{$producto->name}}">
+                            @error('name')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
 
-                            <label for=""class="form-label">Descripcion</label>
-                            <input type="text" name="Descripcion" class="form-control" disabled value="{{$producto->Descripcion}}">
-                            @error('Descripcion')
+                            <label for=""class="form-label">Codigo</label>
+                            <input type="text" name="slug" class="form-control" disabled value="{{$producto->slug}}">
+                            @error('slug')
+                                <small class="text-light">{{ $message }}</small>
+                            @enderror
+                            <br>
+
+                            <label for=""class="form-label">Detalles</label>
+                            <input type="text" name="details" class="form-control" disabled value="{{$producto->details}}">
+                            @error('details')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
 
                             <label for=""class="form-label">Precio</label>
-                            <input type="number" step="0.25" name="Precio" class="form-control" disabled value="{{$producto->Precio}}">
-                            @error('Precio')
+                            <input type="number" step="0.25" name="price" class="form-control" disabled value="{{$producto->price}}">
+                            @error('price')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
 
-                            <label for=""class="form-label">Cod</label>
-                            <input type="text" name="Cod" class="form-control" disabled value="{{$producto->Cod}}">
-                            @error('Cod')
+                            <label for=""class="form-label">Envio</label>
+                            <input type="number" step="0.25" name="shipping_cost" class="form-control" disabled value="{{$producto->shipping_cost}}">
+                            @error('shipping_cost')
+                                <small class="text-light">{{ $message }}</small>
+                            @enderror
+                            <br>
+
+                            <label for=""class="form-label">Descripcion</label>
+                            <input type="text" name="description" class="form-control" disabled value="{{$producto->description}}">
+                            @error('description')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
 
                             <label for=""class="form-label">Imagen</label>
-                            <img src="{{asset($producto->Imagen)}}" width="40%" height="25%" class="img img-responsive">
+                            <img src="{{asset($producto->image_path)}}" width="40%" height="25%" class="img img-responsive">
                             <br>
 
-                            <label for=""class="form-label">Stock</label>
-                            <input type="number" name="stock" class="form-control" disabled value="{{$producto->stock}}">
-                            @error('stock')
+                            <label for=""class="form-label">Marca</label>
+                            <input type="text" name="brand_id" class="form-control" disabled value="{{$producto->Marca->NMarca}}">
+                            @error('brand_id')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
 
-                            <label for=""class="form-label">Marca</label>
-                            <input type="text" name="IDMarca" class="form-control" disabled value="{{$producto->Marca->NMarca}}">
-                            @error('IDMarca')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-
-                            <label for=""class="form-label">Marca</label>
-                            <input type="text" name="IDSucursal" class="form-control" disabled value="{{$producto->Sucursal->Direccion}}">
-                            @error('IDSucursal')
+                            <label for=""class="form-label">Sucursal</label>
+                            <input type="text" name="category_id" class="form-control" disabled value="{{$producto->Sucursal->Direccion}}">
+                            @error('category_id')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>

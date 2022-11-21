@@ -8,18 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre', 'Descripcion', 'Precio', 'Cod', 'Imagen', 'Stock', 'IDMarca', 'IDSucursal'];
+    protected $fillable = ['name', 'slug', 'details', 'price', 'shipping_cost', 'description', 'category_id', 'brand_id', 'image_path'];
     protected $table = 'productos';
 
 
     public function Sucursal()
     {
-        return $this->belongsTo(Sucursal::class, 'IDSucursal');
+        return $this->belongsTo(Sucursal::class,'category_id');
     }
 
     public function Marca()
     {
-        return $this->belongsTo(Marca::class, 'IDMarca');
+        return $this->belongsTo(Marca::class,'brand_id');
     }
 
     public function Detalles()

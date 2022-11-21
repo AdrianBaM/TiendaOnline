@@ -36,22 +36,28 @@
                                 Nombre
                             </td>
                             <td>
-                                Descripcion
+                                Codigo
+                            </td>
+                            <td>
+                                Detalles
                             </td>
                             <td>
                                 Precio
                             </td>
                             <td>
-                                Codigo
+                                Envio
+                            </td>
+                            <td>
+                                Descripcion
                             </td>
                             <td>
                                 Imagen
                             </td>
                             <td>
-                                Existencias
+                                Marca
                             </td>
                             <td>
-                                Marca
+                                Sucursal
                             </td>
                             <td>
                                 Creado
@@ -72,25 +78,31 @@
                                 {{$producto->id}}
                             </td>
                             <td>
-                                {{$producto->Nombre}}
+                                {{$producto->name}}
                             </td>
                             <td>
-                                {{$producto->Descripcion}}
+                                {{$producto->slug}}
                             </td>
                             <td>
-                                {{$producto->Precio}}
+                                {{$producto->details}}
                             </td>
                             <td>
-                                {{$producto->Cod}}
+                                {{$producto->price}}
                             </td>
                             <td>
-                                <img src="{{asset($producto->Imagen)}}" width="150" height="80" class="img img-responsive">
+                                {{$producto->shipping_cost}}
                             </td>
                             <td>
-                                {{$producto->stock}}
+                                {{$producto->description}}
+                            </td>
+                            <td>
+                                <img src="{{asset($producto->image_path)}}" width="150" height="80" class="img img-responsive">
                             </td>
                             <td>
                                 {{$producto->Marca->NMarca}}
+                            </td>
+                            <td>
+                                {{$producto->Sucursal->Direccion}}
                             </td>
                             <td>
                                 {{$producto->created_at->format('d-m-Y')}}

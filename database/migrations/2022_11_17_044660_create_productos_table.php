@@ -15,17 +15,18 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre');
-            $table->string('Descripcion');
-            $table->float('Precio');
-            $table->string('Cod');
-            $table->string('Imagen');
-            $table->integer('stock');
-            $table->unsignedBigInteger('IDMarca');          
-            $table->unsignedBigInteger('IDSucursal');          
+            $table->string('name');
+            $table->string('slug');
+            $table->string('details');
+            $table->decimal('price');
+            $table->decimal('shipping_cost');
+            $table->string('description');
+            $table->string('image_path');
+            $table->unsignedBigInteger('brand_id');          
+            $table->unsignedBigInteger('category_id');          
 
-            $table->foreign('IDMarca')->references('id')->on('marcas')->onDelete('cascade');
-            $table->foreign('IDSucursal')->references('id')->on('sucursals')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('marcas')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('sucursals')->onDelete('cascade');
             $table->timestamps();
         });
     }

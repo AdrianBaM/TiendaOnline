@@ -24,12 +24,14 @@ class StoreProductoPost extends FormRequest
     public function rules()
     {
         return [
-            'Nombre' => 'required',
-            'Descripcion' => 'required',
-            'Precio' => 'required|numeric',
-            'Cod' => 'required',
-            'stock' => 'required',
-            'IDMarca' => 'required',
+            'name' => 'required',
+            'slug' => 'required',
+            'details' => 'required',
+            'price' => 'required|numeric',
+            'shipping_cost' => 'required|numeric',
+            'description' => 'required',
+            'brand_id' => 'required',
+            'category_id' => 'required',
         ];
     }
 }
