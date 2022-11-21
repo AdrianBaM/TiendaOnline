@@ -24,7 +24,7 @@
             <div class="card">
                 
                 <div class="card-header">
-                    <a href="{{route('categorias.create')}}" class="btn btn-primary">Crear</a>
+                    <a href="{{route('categorias.create')}}" class="btn btn-success">Crear</a>
                     <table class="table table-striped">
                 <Thead>
                     <body>
@@ -64,14 +64,13 @@
                                 {{$categoria->updated_at-> format('d-m-Y')}}
                             </td>
 
-                            <td>
-                                <a href="{{route('categorias.show', $categoria->id)}}" class="btn btn-outline-info">Ver</a>
-                                <a href="{{route('categorias.edit', $categoria->id)}}" class="btn btn-outline-info">Actualizar</a>
-                                                        
+                            <td>                
                                 <form method="POST" action="{{route('categorias.destroy', $categoria->id)}}">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-outline-danger ms-5" type="submit">Borrar</button>
+                                <a href="{{route('categorias.show', $categoria->id)}}" class="btn btn-info">Ver</a>
+                                <a href="{{route('categorias.edit', $categoria->id)}}" class="btn btn-warning">Edit</a>
+                                <button class="btn btn-danger" type="submit">Borrar</button>
                                 </form >
                             </td>
                         </tr>

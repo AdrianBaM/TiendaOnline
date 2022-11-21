@@ -11,34 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/categorias">Categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/clientes">Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/departamentos">Departamentos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/empleados">Empleados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/marcas">Marcas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/sucursals">Sucursales</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/tipos">Tipos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/ventas">Ventas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/detalles">Detalle</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/user">Usuarios</a>

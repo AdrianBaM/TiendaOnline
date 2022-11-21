@@ -9,13 +9,12 @@
     <title>Ver</title>
 </head>
 <body>
-    <header>@include('dashboard.partials.nav-header-admin')</header>
-    <br><br>
-
-    <!-- Si hay cualquier tipo de error se generara algo -->
-  
-    <!-- Siempre colocar el endif -->
-
+    <div id="Admin">
+        @include('dashboard.partials.nav-header-admin');
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
     <main>
         <div class="container">
             <div class="card">

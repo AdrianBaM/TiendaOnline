@@ -9,7 +9,7 @@
     <title>Ver</title>
 </head>
 <body>
-    <header>@include('dashboard.partials.nav-header-admin')</header>
+    <header>@include('dashboard.partials.nav-header-manager')</header>
     <br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
@@ -23,7 +23,8 @@
                   <h2>Usuarios</h2>
                 </div>
                 <div class="card-body">
-                    @csrf
+                    <form action="{{route('user.store')}}" method="post">
+                        @csrf
             
                         <section class="margen">
                             <label for=""class="form-label">Usuario</label>
@@ -32,22 +33,9 @@
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
-
-                            <label for=""class="form-label">Contraseña</label>
-                            <input type="text" name="Pass" class="form-control" disabled value="{{$usuario->Pass}}">
-                            @error('Pass')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-
-                            <label for=""class="form-label">Tipo de Usuario</label>
-                            <input type="text" name="IDTipo" class="form-control" disabled value="{{$usuario->IDTipo}}">
-                            @error('IDTipo')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
                         </section>
-                  <a href="{{route('user.index')}}" class="btn btn-info">Regresar</a>
+                    </form>
+                  <a href="{{route('user.index')}}" class="btn btn-primary">Regresar</a>
                 </div>
             </div>
         </div>

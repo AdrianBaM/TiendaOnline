@@ -9,7 +9,7 @@
     <title>Ver</title>
 </head>
 <body>
-    <header>@include('dashboard.partials.nav-header-admin')</header>
+    <header>@include('dashboard.partials.nav-header-manager')</header>
     <br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
@@ -37,7 +37,7 @@
                             <br>
                         </section>
                     </form>
-                  <a href="{{route('tipos.index')}}" class="btn btn-info">Regresar</a>
+                  <a href="{{route('tipos.index')}}" class="btn btn-primary">Regresar</a>
                 </div>
             </div>
         </div>

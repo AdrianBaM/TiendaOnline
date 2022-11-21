@@ -106,14 +106,13 @@
                                 {{$venta->updated_at-> format('d-m-Y')}}
                             </td>
 
-                            <td>
-                                <a href="{{route('ventas.show', $venta->id)}}" class="btn btn-outline-info">Ver</a>
-                                <a href="{{route('ventas.edit', $venta->id)}}" class="btn btn-outline-info">Actualizar</a>
-                                                        
+                            <td>                 
                                 <form method="POST" action="{{route('ventas.destroy', $venta->id)}}">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-outline-danger ms-5" type="submit">Borrar</button>
+                                <a href="{{route('ventas.show', $venta->id)}}" class="btn btn-info">Ver</a>
+                                <a href="{{route('ventas.edit', $venta->id)}}" class="btn btn-warning">Actualizar</a>
+                                <button class="btn btn-danger" type="submit">Borrar</button>
                                 </form >
                             </td>
                         </tr>

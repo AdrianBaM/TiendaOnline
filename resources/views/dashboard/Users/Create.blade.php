@@ -12,7 +12,7 @@
    
 
     <header>
-        @include('dashboard.partials.nav-header-admin')
+        @include('dashboard.partials.nav-header-manager')
         <br>
         <center><h1 class="mb-5">Ingreso de Usuarios</h1></center>
     </header>
@@ -58,8 +58,8 @@
                         
         
                         <center>
-                            <button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
-                            <a href="{{route('user.index')}}" class="btn btn-outline-primary mt-3">Regresar</a>
+                            <button type="" class="btn btn-success btn-lg">Guardar</button>
+                            <a href="{{route('user.index')}}" class="btn btn-primary btn-lg">Regresar</a>
                         </center>
         
                     </article>

@@ -50,8 +50,8 @@
                         
         
                         <center>
-                            <button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
-                            <a href="{{route('sucursals.index')}}" class="btn btn-outline-primary mt-3">Regresar</a>
+                            <button type="" class="btn btn-success btn-lg">Guardar</button>
+                            <a href="{{route('sucursals.index')}}" class="btn btn-primary btn-lg">Regresar</a>
                         </center>
         
                     </article>

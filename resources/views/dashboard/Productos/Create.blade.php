@@ -92,9 +92,9 @@
                 </div>
                 
                 
-                <center><button type="submit" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
-                    <a href="{{route('productos.index')}}" class="btn btn-info mt-3">Regresar</a>
-
+                <center>
+                    <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+                    <a href="{{route('productos.index')}}" class="btn btn-primary btn-lg">Regresar</a>
                 </center>
 
             </article>

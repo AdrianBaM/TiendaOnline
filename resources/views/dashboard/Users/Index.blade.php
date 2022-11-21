@@ -12,14 +12,19 @@
 <body>
 
     
-    <header>@include('dashboard.partials.nav-header-admin')</header>
+    <header>@include('dashboard.partials.nav-header-manager')</header>
+
+    <!-- Si hay cualquier tipo de error se generara algo -->
+  
+    <!-- Siempre colocar el endif -->
+
     <main>
         <br><br>
         <div class="container">
             <div class="card">
                 
                 <div class="card-header">
-                    <a href="{{route('user.create')}}" class="btn btn-primary">Crear</a>
+                    <a href="{{route('user.create')}}" class="btn btn-success">Crear</a>
                     <table class="table table-striped">
                 <Thead>
                     <body>
@@ -29,9 +34,6 @@
                             </td>
                             <td>
                                 Usuario
-                            </td>
-                            <td>
-                                Contraseña
                             </td>
                             <td>
                                 Tipo de usuario
@@ -58,10 +60,7 @@
                                 {{$usuario->Usuario}}
                             </td>
                             <td>
-                                {{$usuario->Pass}}
-                            </td>
-                            <td>
-                                {{$usuario->IDTipo}}
+                                {{$usuario->Tipo->TipoU}}
                             </td>
                             <td>
                                 {{$usuario->created_at->format('d-m-Y')}}
@@ -71,16 +70,11 @@
                                 {{$usuario->updated_at-> format('d-m-Y')}}
                             </td>
 
-                            <td>
-                                <form style="display: inline">
-                                    <a href="{{route('user.show', $usuario->id)}}" class="btn btn-outline-info">Ver</a>
-                                </form>
-                                
-                                                        
+                            <td>            
                                 <form style="display: inline" method="POST" action="{{route('user.destroy', $usuario->id)}}">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-outline-danger ms-5" type="submit">Borrar</button>
+                                <button class="btn btn-danger" type="submit">Borrar</button>
                                 </form >
                             </td>
                         </tr>

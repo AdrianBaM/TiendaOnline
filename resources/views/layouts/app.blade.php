@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="app">
-    @include('dashboard.partials.nav-header-admin');
+    @include('dashboard.partials.nav-header-client');
     <main class="py-4">
         @yield('content')
     </main>

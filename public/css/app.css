@@ -1,0 +1,17 @@
+.fondo{
+    background-color: #70A8FF;
+}
+.fondo1{
+    background-color: #7d8fac;
+}
+
+.contorno {
+    border-color: gray;
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-top: 15%;
+    border-width: 2px 10px 5px;
+    border-style:solid;
+   
+  }

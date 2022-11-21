@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        @include('dashboard.partials.nav-header-admin')
+        @include('dashboard.partials.nav-header-manager')
         <br>
         <center><h1 class="mb-5">Actualizar Tipos</h1></center>
     </header>
@@ -34,8 +34,8 @@
                 </div>
 
                 
-                <center><button type="" class="btn btn-outline-warning btn-lg"><h4>Guardar</h4></button><br>
-                    <a href="{{route('tipos.index')}}" class="btn btn-info mt-3">Regresar</a>
+                <center><button type="" class="btn btn-success btn-lg">Guardar</button>
+                    <a href="{{route('tipos.index')}}" class="btn btn-primary btn-lg">Regresar</a>
 
                 </center>
 

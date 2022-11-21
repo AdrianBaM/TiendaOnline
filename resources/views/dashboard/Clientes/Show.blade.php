@@ -79,7 +79,7 @@
                             <br>
                         </section>
                     </form>
-                  <a href="{{route('clientes.index')}}" class="btn btn-info">Regresar</a>
+                  <a href="{{route('clientes.index')}}" class="btn btn-primary">Regresar</a>
                 </div>
             </div>
         </div>

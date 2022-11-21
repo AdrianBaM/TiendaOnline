@@ -23,7 +23,11 @@ class UserController extends Controller
             }
             if($user->IDTipo === 2)
             {
-                return redirect('/productos');
+                return redirect('/user');
+            }
+            if($user->IDTipo === 3)
+            {
+                return redirect('/shop');
             }
             
         }

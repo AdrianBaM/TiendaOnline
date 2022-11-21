@@ -12,7 +12,7 @@
 <body>
 
     
-    <header>@include('dashboard.partials.nav-header-admin')</header>
+    <header>@include('dashboard.partials.nav-header-manager')</header>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
   
@@ -24,7 +24,7 @@
             <div class="card">
                 
                 <div class="card-header">
-                    <a href="{{route('tipos.create')}}" class="btn btn-primary">Crear</a>
+                    <a href="{{route('tipos.create')}}" class="btn btn-success">Crear</a>
                     <table class="table table-striped">
                 <Thead>
                     <body>
@@ -65,13 +65,14 @@
                             </td>
 
                             <td>
-                                <a href="{{route('tipos.show', $tipo->id)}}" class="btn btn-outline-info">Ver</a>
-                                <a href="{{route('tipos.edit', $tipo->id)}}" class="btn btn-outline-info">Actualizar</a>
+                                
                                                         
                                 <form method="POST" action="{{route('tipos.destroy', $tipo->id)}}">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-outline-danger ms-5" type="submit">Borrar</button>
+                                <a href="{{route('tipos.show', $tipo->id)}}" class="btn btn-info">Ver</a>
+                                <a href="{{route('tipos.edit', $tipo->id)}}" class="btn btn-warning">Edit</a>
+                                <button class="btn btn-danger " type="submit">Borrar</button>
                                 </form >
                             </td>
                         </tr>

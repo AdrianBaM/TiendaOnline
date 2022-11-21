@@ -86,7 +86,7 @@
                             <br>
                         </section>
                     </form>
-                  <a href="{{route('ventas.index')}}" class="btn btn-info">Regresar</a>
+                  <a href="{{route('ventas.index')}}" class="btn btn-primary">Regresar</a>
                 </div>
             </div>
         </div>
